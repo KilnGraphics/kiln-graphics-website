@@ -1,0 +1,27 @@
+{
+  "name": "kiln-graphics-website",
+  "version": "1.0.0",
+  "description": "Website for Kiln Graphics",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KilnGraphics/kiln-graphics-website.git"
+  },
+  "keywords": [
+    "Kiln",
+    "Graphics",
+    "Vulkan"
+  ],
+  "author": "Kiln Graphics, OroArmor",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/KilnGraphics/kiln-graphics-website/issues"
+  },
+  "homepage": "https://github.com/KilnGraphics/kiln-graphics-website#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
