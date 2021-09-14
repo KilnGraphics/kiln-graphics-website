@@ -1,8 +1,17 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const path = require('path')
+const pug = require('pug')
+
+app.set('view engine', 'pug')
 
 app.get('/', function (req, res) {
-   res.send('Hello World');
+   res.render('pages/index', {
+     title: 'Kiln Graphics',
+     viewPath: path.resolve(__dirname, 'views', 'pages'),
+     basedir: path.resolve(__dirname, 'views', 'partials'),
+
+   })
 })
 
 var server = app.listen(3000, function () {
@@ -11,4 +20,3 @@ var server = app.listen(3000, function () {
 
    console.log("Example app listening at http://%s:%s", host, port)
 })
-

@@ -11,8 +11,7 @@
     "url": "git+https://github.com/KilnGraphics/kiln-graphics-website.git"
   },
   "keywords": [
-    "Kiln",
-    "Graphics",
+    "Kiln Graphics",
     "Vulkan"
   ],
   "author": "Kiln Graphics, OroArmor",
@@ -22,6 +21,7 @@
   },
   "homepage": "https://github.com/KilnGraphics/kiln-graphics-website#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pug": "^3.0.2"
   }
 }
