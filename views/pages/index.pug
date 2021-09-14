@@ -1,6 +1,56 @@
 extends layout.pug
 
+mixin project_panel(project_info)
+  div.col-md-6.col-sm-6.col-lg-6.h-auto.flex-grow-1.btn.text-start(data-bs-toggle="modal" data-bs-target="#"+project_info.id)
+    div.card.mx-1.my-1.h-100
+      img.card-img-top(src = project_info.img, alt = project_info.name)
+      div.card-body.border-top.h-100.d-flex.flex-column
+        div.flex-shrink-0
+          h4.card-title= project_info.name
+          p.card-text= project_info.short_description
+        ul.column.w-100.mt-auto.py-3.list-inline
+          for key in Object.keys(project_info.links)
+            li.list-inline-item
+                a.btn.btn-primary.btn-dark(href=project_info.links[key] target="_blank" rel="noopener noreferrer")= icons[key]
+
+mixin project_modal(project_info)
+  div.modal.fade(id = project_info.id tabIndex = -1 aria-labelledby=project_info.id aria-hidden="true")
+    div.modal-dialog.modal-dialog-centered
+      div.modal-content
+        div.modal-header
+          h4.card-title= project_info.name
+          button.btn-close(data-bs-dismiss="modal")
+        div.modal-body
+          // TODO: make into a carousel
+          img.card-img-top(src = project_info.img, alt = project_info.name)
+          p.card-text= project_info.short_description
+        div.modal-footer.justify-content-start
+          div.flex-grow-1
+            ul.list-inline.my-0
+              for key in Object.keys(project_info.links)
+                li.list-inline-item
+                    a.btn.btn-primary.btn-dark(href=project_info.links[key] target="_blank" rel="noopener noreferrer")= icons[key]
+          div.flex-shrink-1
+            button.btn.btn-dark(data-bs-dismiss="modal") Close
+      
 append main
-  div.container.mt-auto.py-3
-    h3 Hello World!
-    p This is a template page right now!
+  div
+    h1 Kiln Graphics
+    p Kiln Graphics is a group of Java developers focused on bringing the Vulkan rendering engine to Java in a clean, simple fashion.
+  div
+    div.container-fluid
+      h2 Mods
+      div.row
+        for mod in mods
+          +project_panel(mod)
+    div.container-fluid
+      h2 Libraries
+      div.row
+        for library in libraries
+          +project_panel(library)
+
+append modals     
+  for mod in mods
+    +project_modal(mod)
+  for library in libraries
+    +project_modal(library)

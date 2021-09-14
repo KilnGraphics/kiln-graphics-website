@@ -4,10 +4,17 @@ const path = require('path')
 const pug = require('pug')
 
 app.set('view engine', 'pug')
+const mods = require('./config/mods.js')
+const libraries = require('./config/libraries.js')
+const icons = require('./config/icons.js')[0]
+
 
 const defaultOptions = {
   viewPath: path.resolve(__dirname, 'views', 'pages'),
-  basedir: path.resolve(__dirname, 'views', 'partials')
+  basedir: path.resolve(__dirname, 'views', 'partials'),
+  mods: mods,
+  libraries: libraries,
+  icons: icons
 }
 
 app.get('/', function (req, res) {
@@ -33,6 +40,7 @@ app.use(function (err, req, res, next) {
     error: err.err || 500,
     page: "error"
   }})
+  console.error(err)
 })
 //
 // app.get("*", function (req, res) {

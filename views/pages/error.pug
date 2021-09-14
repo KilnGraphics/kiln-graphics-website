@@ -2,7 +2,10 @@ extends layout.pug
 
 append main
   h3 Oh no! Something went wrong!
-  if error == "404"
-    p Looks like the page you are looking for doesn't exist. If you clicked on a link to it from our page, this page is probably being worked on.
-  else if error == "500"
-    p Looks like something happened internally to the server. Please report an issue on #[a(href="https://github.com/KilnGraphics/kiln-graphics-website/issues" target="_blank" rel="noopener noreferrer") our issue tracker].
+  case error
+    when 404
+      p Looks like the page you are looking for doesn't exist. If you clicked on a link to it from our page, this page is probably being worked on.
+    when 500
+      p Looks like something happened internally to the server. Please report an issue on #[a(href="https://github.com/KilnGraphics/kiln-graphics-website/issues" target="_blank" rel="noopener noreferrer") our issue tracker].
+    default
+      p Unknown Error !{error}!

@@ -6,5 +6,7 @@ html(lang='en').h-100
   body.d-flex.flex-column.h-100#body
     include /header
     main.flex-shrink-0#main
-      block main
+      div.container.mt-auto.py-3
+        block main
     include /footer
+    block modals
