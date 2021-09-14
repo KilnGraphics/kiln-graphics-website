@@ -1,10 +1,10 @@
 doctype html
-html(lang='en')
+html(lang='en').h-100
   head
     block head
       include /head
-  body#body
-    //- include /header
-    section#main
+  body.d-flex.flex-column.h-100#body
+    include /header
+    main.flex-shrink-0#main
       block main
-    //- include /footer
+    include /footer

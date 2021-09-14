@@ -1,0 +1,29 @@
+div#header
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
+    div.container-fluid
+      a(href=`/`).navbar-brand Kiln Graphics
+      button.navbar-toggler(type = "button", data-bs-toggle = "collapse", data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      div.collapse.navbar-collapse#navbarSupportedContent
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item
+            a.nav-link(href="/" class= page == "home" ? "active": "") Home
+          li.nav-item
+            a.nav-link(href="/about" class= page == "about" ? "active": "") About Us
+          li.nav-item
+            a.nav-link(href="/mods" class= page == "mods" ? "active": "") Mods
+            ul.dropdown-menu.fade-up
+              li
+                a.dropdown-item(href = "/mods/temp") Temp
+              li
+                a.dropdown-item(href = "/mods/temp") Temp
+          li.nav-item
+            a.nav-link(href="/libraries" class= page == "libraries" ? "active": "") Libraries
+            ul.dropdown-menu.fade-up
+              li
+                a.dropdown-item(href = "/libraries/temp") Temp
+              li
+                a.dropdown-item(href = "/libraries/temp") Temp
+          li.nav-item
+            a.nav-link(href="/download" class= page == "download" ? "active": "") Download            
+                  
