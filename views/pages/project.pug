@@ -1,0 +1,28 @@
+extends layout.pug
+
+append main
+  h1= project.title
+  p= project.description
+  
+  if project.deprecated
+    p
+      strong This project is deprecated and will not be updated.
+  
+  div
+    h3 Features
+    div.row.justify-content-md-center
+      for feature in project.features
+        div.col-3
+          div.card.mx-1.my-1.h-100
+            div.card-body.h-100.d-flex.flex-column
+              div.flex-shrink-0
+                h6.text-centered.card-title= feature 
+  div.my-3
+    h3 Maintainers
+    if project.maintainers.length == 0
+      p This project is not currently maintained by anyone.
+    else
+      p This project is maintained by:
+      ul
+        for maintainer in project.maintainers
+          li= maintainer

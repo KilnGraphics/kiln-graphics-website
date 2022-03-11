@@ -1,0 +1,26 @@
+extends layout.pug
+
+append main
+  div
+    h1 About Us
+    h3 Goals
+    p Kiln Graphics is a group of Java and Rust developers focused on bringing the Vulkan rendering engine to both languages in a clean, simple fashion.
+    p With these goals, we have decided to make #[a(href="/library/rosella-rs") Rosella RS], a rust based Vulkan rendering engine.
+    
+  div
+    h3 Our Developers
+    div.container-fluid
+      div.row.row-cols-2
+        for dev in devs
+          div.col-md-6.col-sm-6.col-lg-6.h-auto.flex-grow-1.py-3
+            div.card.mx-1.my-1.h-100
+              //- if project_info.img != null
+              //-   img.card-img-top(src = project_info.img, alt = project_info.name)
+              div.card-body.border-top.h-100.d-flex.flex-column
+                div.flex-shrink-0
+                  h4.card-title= dev.name
+                  p.card-text !{dev.description}
+                  ul.list-inline.my-0
+                    for key in Object.keys(dev.links)
+                      li.list-inline-item
+                          a.btn.btn-primary.btn-dark(href=dev.links[key] target="_blank" rel="noopener noreferrer")= icons[key]

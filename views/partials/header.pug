@@ -13,17 +13,15 @@ div#header
           li.nav-item
             a.nav-link(href="/mods" class= page == "mods" ? "active": "") Mods
             ul.dropdown-menu.fade-up
-              li
-                a.dropdown-item(href = "/mods/temp") Temp
-              li
-                a.dropdown-item(href = "/mods/temp") Temp
+              for mod in mods
+                li
+                  a.dropdown-item(href = "/mod/" + mod.id)= mod.name 
           li.nav-item
             a.nav-link(href="/libraries" class= page == "libraries" ? "active": "") Libraries
             ul.dropdown-menu.fade-up
-              li
-                a.dropdown-item(href = "/libraries/temp") Temp
-              li
-                a.dropdown-item(href = "/libraries/temp") Temp
+              for lib in libraries
+                li
+                  a.dropdown-item(href = "/library/" + lib.id)= lib.name
           li.nav-item
             a.nav-link(href="/download" class= page == "download" ? "active": "") Download            
                   

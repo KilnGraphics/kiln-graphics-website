@@ -1,4 +1,5 @@
 module.exports = [{
   curseforge: "CF",
-  github: "GH"
+  github: "GH",
+  twitter: "TW"
 }]
