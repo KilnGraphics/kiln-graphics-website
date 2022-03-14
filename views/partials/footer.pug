@@ -1,3 +1,25 @@
 footer.mt-auto.py-3.bg-dark.text-light
   div.container
-    p=`Copyright ${new Date().getFullYear()} Kiln Graphics` 
+    div.row
+      div.col-md-3.mt-3
+        h5 About Kiln Graphics
+        p Bringing advanced Vulkan rendering engines to Rust and the JVM.
+      div.col-md-3.mt-3
+        h5 Mods
+        each mod in mods
+          p.border-bottom.border-light.my-2.pb-2
+            a.link-light(href="/mod/" + mod.id)= mod.title
+      div.col-md-3.mt-3
+        h5 Libraries
+        each library in libraries
+          p.border-bottom.border-light.my-2.pb-2
+            a.link-light(href="/library/" + library.id)= library.title
+      div.col-md-3.mt-3
+        h5 Socials
+        each social in Object.keys(socials)
+          p.border-bottom.border-light.my-2.pb-2
+            a.link-light(href=socials[social] target = "_blank")
+              img.icon(src = "/images/icons/" + social + ".svg")
+              span="\t" + icons[social].name
+    div.pt-3
+      p.text-center=`Copyright ${new Date().getFullYear()} Kiln Graphics` 

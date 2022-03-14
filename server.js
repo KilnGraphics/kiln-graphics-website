@@ -6,8 +6,9 @@ const pug = require('pug')
 app.set('view engine', 'pug')
 const mods = require('./config/mods.js')
 const libraries = require('./config/libraries.js')
-const icons = require('./config/icons.js')[0]
+const icons = require('./config/icons.js')
 const devs = require('./config/devs.js')
+const socials = require('./config/socials.js')
 
 
 const defaultOptions = {
@@ -15,7 +16,8 @@ const defaultOptions = {
   basedir: path.resolve(__dirname, 'views', 'partials'),
   mods: mods,
   libraries: libraries,
-  icons: icons
+  icons: icons,
+  socials: socials
 }
 
 app.get('/', function (req, res) {
@@ -33,38 +35,50 @@ app.get('/about', function (req, res) {
    }})
 })
 
-for (let i in libraries) {
-  let library = libraries[i];
-  let data = require('./config/library/' + library.id + '.js')
-  app.get('/' + library.id, function (req, res) {
-    res.redirect("/library/" + library.id)
+Object.keys(libraries).forEach((library, i) => {
+  app.get('/' + library, function (req, res) {
+    res.redirect("/library/" + library)
   });
 
-  app.get('/library/' + library.id, function (req, res) {
+  app.get('/library/' + library, function (req, res) {
      res.render('pages/project', {...defaultOptions, ...{
-       title: 'Kiln Graphics | ' + library.name,
+       title: 'Kiln Graphics | ' + libraries[library].name,
        page: "libraries",
-       project: data
+       project: libraries[library]
      }})
   })
-}
+});
 
-for (let i in mods) {
-  let mod = mods[i];
-  let data = require('./config/mod/' + mod.id + '.js')
-
-  app.get('/' + mod.id, function (req, res) {
-    res.redirect("/mod/" + mod.id)
+Object.keys(mods).forEach((mod, i) => {
+  app.get('/' + mod, function (req, res) {
+    res.redirect("/mod/" + mod)
   });
 
-  app.get('/mod/' + mod.id, function (req, res) {
+  app.get('/mod/' + mod, function (req, res) {
      res.render('pages/project', {...defaultOptions, ...{
-       title: 'Kiln Graphics | ' + mod.name,
+       title: 'Kiln Graphics | ' + mods[mod].name,
        page: "mods",
-       project: data
+       project: mods[mod]
      }})
   })
-}
+});
+
+// for (let i in mods) {
+//   let mod = mods[i];
+//   let data = require('./config/mod/' + mod.id + '.js')
+//
+//   app.get('/' + mod.id, function (req, res) {
+//     res.redirect("/mod/" + mod.id)
+//   });
+//
+//   app.get('/mod/' + mod.id, function (req, res) {
+//      res.render('pages/project', {...defaultOptions, ...{
+//        title: 'Kiln Graphics | ' + mod.name,
+//        page: "mods",
+//        project: data
+//      }})
+//   })
+// }
 
 
 

@@ -15,13 +15,13 @@ div#header
             ul.dropdown-menu.fade-up
               for mod in mods
                 li
-                  a.dropdown-item(href = "/mod/" + mod.id)= mod.name 
+                  a.dropdown-item(href = "/mod/" + mod.id)= mod.title 
           li.nav-item
-            a.nav-link(href="/libraries" class= page == "libraries" ? "active": "") Libraries
+            a.nav-link(href="/libraries" class= page == "libraries" ? "active": "") Librariess
             ul.dropdown-menu.fade-up
               for lib in libraries
                 li
-                  a.dropdown-item(href = "/library/" + lib.id)= lib.name
+                  a.dropdown-item(href = "/library/" + lib.id)= lib.title
           li.nav-item
             a.nav-link(href="/download" class= page == "download" ? "active": "") Download            
                   

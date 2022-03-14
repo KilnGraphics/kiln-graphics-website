@@ -1,7 +1,7 @@
 module.exports=[
   {
     name: "OroArmor",
-    description: "Creator of <a href=\"/library/aftermath\">AfterMath</a> and this website. Admin of Quilt MC",
+    description: "Creator of <a href=\"/library/aftermath\">AfterMath</a> and this website. Admin on Quilt MC.",
     links: {
       twitter: "https://twitter.com/realOroArmor",
       curseforge: "https://curseforge.com/members/oroarmor/projects",

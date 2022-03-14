@@ -1,5 +1,6 @@
-module.exports = [{
-  curseforge: "CF",
-  github: "GH",
-  twitter: "TW"
-}]
+module.exports = {
+  curseforge: { name: "CurseForge"},
+  github: { name: "GitHub"},
+  twitter: { name: "Twitter"},
+  discord: { name: "Discord"}
+}

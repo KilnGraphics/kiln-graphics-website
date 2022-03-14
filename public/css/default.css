@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+}
+
+.link-light {
+  color: rgb(var(--bs-light-rgb));
+}
+
+.link-light:focus, .link-light:hover {
+  filter: brightness(0.75);
+}
+
+ul {
+  margin-block-end: 0;
+}
+
+.icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  height: 1em;
+  position: relative;
+  top: -0.1em;
+}

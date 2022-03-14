@@ -1,25 +1,26 @@
 extends layout.pug
 
 mixin project_panel(project_info)
-  div.col-md-6.col-sm-6.col-lg-6.h-auto.flex-grow-1.btn.text-start(data-bs-toggle="modal" data-bs-target="#"+project_info.id)
+  div.col-md-6.col-sm-6.col-lg-6.btn.text-start(data-bs-toggle="modal" data-bs-target="#"+project_info.id)
     div.card.mx-1.my-1.h-100
       if project_info.img != null
         img.card-img-top(src = project_info.img, alt = project_info.name)
       div.card-body.border-top.h-100.d-flex.flex-column
         div.flex-shrink-0
-          h4.card-title= project_info.name
+          h4.card-title= project_info.title
           p.card-text= project_info.short_description
-        ul.column.w-100.mt-auto.py-3.list-inline
+        ul.column.w-100.mt-auto.list-inline
           for key in Object.keys(project_info.links)
             li.list-inline-item
-                a.btn.btn-primary.btn-dark(href=project_info.links[key] target="_blank" rel="noopener noreferrer")= icons[key]
+                a.btn.btn-primary.btn-dark(href=project_info.links[key] target="_blank" rel="noopener noreferrer")
+                  img.icon(src = "/images/icons/" + key + ".svg")
 
 mixin project_modal(project_info)
   div.modal.fade(id = project_info.id tabIndex = -1 aria-labelledby=project_info.id aria-hidden="true")
     div.modal-dialog.modal-dialog-centered
       div.modal-content
         div.modal-header
-          h4.card-title= project_info.name
+          h4.card-title= project_info.title
           button.btn-close(data-bs-dismiss="modal")
         div.modal-body
           // TODO: make into a carousel
@@ -31,7 +32,8 @@ mixin project_modal(project_info)
             ul.list-inline.my-0
               for key in Object.keys(project_info.links)
                 li.list-inline-item
-                    a.btn.btn-primary.btn-dark(href=project_info.links[key] target="_blank" rel="noopener noreferrer")= icons[key]
+                    a.btn.btn-primary.btn-dark(href=project_info.links[key] target="_blank" rel="noopener noreferrer")
+                      img.icon(src = "/images/icons/" + key + ".svg")
           div.flex-shrink-1
             a.btn.btn-primary.btn-dark.mx-1(href="/" + project_info.id) Read More...
             button.btn.btn-dark(data-bs-dismiss="modal") Close
@@ -43,17 +45,17 @@ append main
   div
     div.container-fluid
       h2 Mods
-      div.row
+      div.row.justify-content-md-center
         for mod in mods
           +project_panel(mod)
     div.container-fluid
       h2 Libraries
-      div.row
+      div.row.justify-content-md-center
         for library in libraries
           +project_panel(library)
 
 append modals     
-  for mod in mods
-    +project_modal(mod)
-  for library in libraries
-    +project_modal(library)
+  for mod in Object.keys(mods)
+    +project_modal(mods[mod])
+  for library in Object.keys(libraries)
+    +project_modal(libraries[library])
