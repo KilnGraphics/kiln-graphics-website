@@ -17,7 +17,7 @@ mixin project_panel(project_info)
 
 mixin project_modal(project_info)
   div.modal.fade(id = project_info.id tabIndex = -1 aria-labelledby=project_info.id aria-hidden="true")
-    div.modal-dialog.modal-dialog-centered
+    div.modal-dialog.modal-dialog-centered.modal-lg
       div.modal-content
         div.modal-header
           h4.card-title= project_info.title
@@ -26,7 +26,7 @@ mixin project_modal(project_info)
           // TODO: make into a carousel
           if project_info.img != null
             img.card-img-top(src = project_info.img, alt = project_info.name)
-          p.card-text= project_info.short_description
+          p.card-text= project_info.description.substring(0, 150) + "..."
         div.modal-footer.justify-content-start
           div.flex-grow-1
             ul.list-inline.my-0
@@ -43,13 +43,13 @@ append main
     h1 Kiln Graphics
     p Kiln Graphics is a group of Java developers focused on bringing the Vulkan rendering engine to Java in a clean, simple fashion.
   div
-    div.container-fluid
-      h2 Mods
+    h2 Mods
+    div.container-fluid.mb-4
       div.row.justify-content-md-center
         for mod in mods
           +project_panel(mod)
+    h2 Libraries
     div.container-fluid
-      h2 Libraries
       div.row.justify-content-md-center
         for library in libraries
           +project_panel(library)

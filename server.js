@@ -42,7 +42,7 @@ Object.keys(libraries).forEach((library, i) => {
 
   app.get('/library/' + library, function (req, res) {
      res.render('pages/project', {...defaultOptions, ...{
-       title: 'Kiln Graphics | ' + libraries[library].name,
+       title: 'Kiln Graphics | ' + libraries[library].title,
        page: "libraries",
        project: libraries[library]
      }})
@@ -56,7 +56,7 @@ Object.keys(mods).forEach((mod, i) => {
 
   app.get('/mod/' + mod, function (req, res) {
      res.render('pages/project', {...defaultOptions, ...{
-       title: 'Kiln Graphics | ' + mods[mod].name,
+       title: 'Kiln Graphics | ' + mods[mod].title,
        page: "mods",
        project: mods[mod]
      }})
